@@ -5,7 +5,7 @@ const SignupForm = props => {
     <div>
       Signup
       <form onSubmit={props.handleSubmit}>
-        <label>User:</label>
+        <label>Username:</label>
 
         <input
           onChange={props.handleChange}

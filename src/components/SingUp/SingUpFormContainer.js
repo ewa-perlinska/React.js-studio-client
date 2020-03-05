@@ -51,11 +51,12 @@ class SignupFormContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log("STATE IN MSTP", state);
-  return {
-    userCreated: state.auth.userCreated
-  };
-};
+// const mapStateToProps = state => {
+//   console.log("STATE IN MSTP", state);
+//   return {
+//     userCreated: state.auth.userCreated
+//   };
+// };
 
-export default connect(mapStateToProps)(SignupFormContainer);
+export default connect()(SignupFormContainer);
+// export default connect(mapStateToProps)(SignupFormContainer);
