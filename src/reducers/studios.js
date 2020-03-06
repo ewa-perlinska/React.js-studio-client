@@ -1,13 +1,15 @@
 import {
   STUDIO_CREATE_SUCCESS,
   STUDIOS_FETCHED,
-  ONE_STUDIO_SELECTED
+  ONE_STUDIO_SELECTED,
+  STUDIO_FETCHED
 } from "../actions/studios";
 
 const initialState = {
   allStudios: [],
   createdStudio: {},
-  selectedStudio: {}
+  selectedStudio: {},
+  currentStudio: {}
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +31,11 @@ export default function(state = initialState, action) {
         selectedStudio: action.payload
       };
 
+    case STUDIO_FETCHED:
+      return {
+        ...state,
+        currentStudio: action.payload
+      };
     default:
       return state;
   }
