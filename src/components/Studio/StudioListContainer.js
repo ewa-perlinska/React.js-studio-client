@@ -37,15 +37,11 @@ class StudioListContainer extends React.Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   events: state.events.allEvents,
-//   event: state.events.selectedEvent
-// });
+const mapStateToProps = state => ({
+  studios: state.studios.allStudios,
+  studio: state.studios.selectedStudio
+});
 
-export default connect(null, { loadStudios, selectStudio })(
+export default connect(mapStateToProps, { loadStudios, selectStudio })(
   StudioListContainer
 );
-
-// export default connect(mapStateToProps, { loadStudios, selectStudio })(
-//   StudioListContainer
-// );
