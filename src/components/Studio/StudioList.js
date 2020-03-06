@@ -6,15 +6,15 @@ class StudioList extends Component {
     return (
       <div>
         <div>
-          <h2>{this.props.title}</h2>
+          <h2>{this.props.studioName}</h2>
         </div>
         <img
-          class="Studio image"
+          className="StudioImage"
           alt="Studio image"
-          src={this.props.imageUrl}
+          src={this.props.featuredImage}
         ></img>
-        <p>{this.props.date}</p>
-        <p>{this.props.description}</p>
+        <p>{this.props.city}</p>
+        <p>{this.props.country}</p>
         <Link to={`/studio/${this.props.id}`}>
           <button onClick={() => this.props.onClick(this.props.id)}>
             ~ CHECK STUDIO ~

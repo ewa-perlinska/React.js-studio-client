@@ -75,3 +75,26 @@ export const createStudio = studioDetails => {
     dispatch(createStudioSuccess(response.data));
   };
 };
+
+export const STUDIO_FETCHED = "STUDIO_FETCHED";
+
+export function studioFetch(studio) {
+  return {
+    type: STUDIO_FETCHED,
+    payload: studio
+  };
+}
+
+export function loadStudio(studioId) {
+  return async function(dispatch) {
+    try {
+      const response = await axios.get(`${baseUrl}/studio/${studioId}`);
+      const { data } = response;
+
+      const action = studioFetch(data);
+      dispatch(action);
+    } catch (error) {
+      throw error;
+    }
+  };
+}

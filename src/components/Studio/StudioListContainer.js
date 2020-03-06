@@ -28,7 +28,15 @@ class StudioListContainer extends React.Component {
         ) : (
           <div className="Searcher">
             {this.props.studios.map(studio => (
-              <StudioList />
+              <StudioList
+                id={studio.id}
+                key={studio.id}
+                studioName={studio.studioName}
+                city={studio.city}
+                country={studio.counrty}
+                featuredImage={studio.featuredImage}
+                onClick={this.onClick}
+              />
             ))}
           </div>
         )}
