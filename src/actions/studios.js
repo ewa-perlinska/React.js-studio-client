@@ -1,0 +1,77 @@
+import axios from "axios";
+
+const baseUrl = "http://localhost:4000";
+
+export const STUDIOS_FETCHED = "STUDIOS_FETCHED";
+
+export function studios(studios) {
+  return {
+    type: STUDIOS_FETCHED,
+    payload: studios
+  };
+}
+
+export function loadStudios() {
+  return async function(dispatch) {
+    try {
+      const response = await axios.get(`${baseUrl}/studio`);
+      const { data } = response;
+
+      const action = studios(data);
+      dispatch(action);
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+export const ONE_STUDIO_SELECTED = "ONE_STUDIO_SELECTED";
+
+export function studio(studio) {
+  return {
+    type: ONE_STUDIO_SELECTED,
+    payload: studio
+  };
+}
+
+export function selectStudio(id) {
+  return async function(dispatch, getState) {
+    try {
+      const response = await axios.get(`${baseUrl}/studio/${id}`);
+      console.log("do i have my response?", response);
+      dispatch(studio(response.data));
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+
+export const STUDIO_CREATE_SUCCESS = "STUDIO_CREATE_SUCCESS";
+
+function createStudioSuccess(studio) {
+  return {
+    type: STUDIO_CREATE_SUCCESS,
+    payload: {
+      studio: studio
+    }
+  };
+}
+
+export const createStudio = studioDetails => {
+  return async function(dispatch, getState) {
+    const stateData = getState().auth.data;
+    const token = stateData.token;
+    console.log("my studio details", studioDetails);
+
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:4000/studio",
+      headers: { authorization: `Bearer ${token}` },
+      data: {
+        studioDetails
+      }
+    });
+
+    console.log(response);
+    dispatch(createStudioSuccess(response.data));
+  };
+};

@@ -20,9 +20,9 @@ function UploadImages() {
 
     const file = await response.json();
 
-    // const updateStudioResponse = await fetch("localhost:3000/studios/1", {
+    // const updateStudioResponse = await fetch(`localhost:4000/studio/:id`, {
     //   method: "PATCH",
-    //   body: { imageUrl: file.secure_url }
+    //   body: { featuredImage: file.secure_url }
     // });
 
     setImage(file.secure_url);
