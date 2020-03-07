@@ -36,7 +36,7 @@ function UpdateStudioContainer() {
 
     // console.log(state);
     // const studioDetails = this.state;
-    this.props.updateStudio(studioData, this.props.studio.id);
+    this.props.dispatch(updateStudio(studioData, this.props.match.params.id));
   };
 
   const handleFileSelect = async e => {
@@ -139,4 +139,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, updateStudio)(UpdateStudioContainer);
+export default connect(mapStateToProps)(UpdateStudioContainer);
