@@ -7,6 +7,7 @@ import UploadImages from "./components/ImageUpload/ImageUploadContainer";
 import CreateStudioContainer from "./components/Studio/CreateStudioContainer";
 import StudioListContainer from "./components/Studio/StudioListContainer";
 import StudioDetails from "./components/Studio/StudioDetails";
+import MyStudioContainer from "./components/Studio/MyStudioContainer";
 
 function App() {
   return (
@@ -28,12 +29,16 @@ function App() {
         <Link to="/studio">
           <li>~ LOOK AT ALL STUDIOS ~</li>
         </Link>
+        <Link to="/mystudio">
+          <li>~ MY STUDIO ~</li>
+        </Link>
         <Route exact path="/studio" component={StudioListContainer} />
         <Route exact path="/studio/:id" component={StudioDetails} />
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/uploadImage" component={UploadImages} />
         <Route exact path="/createStudio" component={CreateStudioContainer} />
+        <Route exact path="/mystudio" component={MyStudioContainer} />
       </Router>
     </div>
   );

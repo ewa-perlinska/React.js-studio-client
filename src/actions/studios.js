@@ -98,3 +98,26 @@ export function loadStudio(studioId) {
     }
   };
 }
+
+export const MY_STUDIO_FETCHED = "MY_STUDIO_FETCHED";
+
+export function myStudioFetch(studio) {
+  return {
+    type: MY_STUDIO_FETCHED,
+    payload: studio
+  };
+}
+
+export function loadMyStudio(studioId) {
+  return async function(dispatch) {
+    try {
+      const response = await axios.get(`${baseUrl}/studio/${studioId}`);
+      const { data } = response;
+
+      const action = myStudioFetch(data);
+      dispatch(action);
+    } catch (error) {
+      throw error;
+    }
+  };
+}
