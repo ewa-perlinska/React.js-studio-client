@@ -108,16 +108,18 @@ export function myStudioFetch(studio) {
   };
 }
 
-export function loadMyStudio(studioId) {
-  return async function(dispatch) {
-    try {
-      const response = await axios.get(`${baseUrl}/studio/${studioId}`);
-      const { data } = response;
+export const loadMyStudio = () => {
+  return async function(dispatch, getState) {
+    const stateData = getState().auth.data;
+    const token = stateData.token;
 
-      const action = myStudioFetch(data);
-      dispatch(action);
-    } catch (error) {
-      throw error;
-    }
+    const response = await axios({
+      method: "GET",
+      url: "http://localhost:4000/mystudio",
+      headers: { authorization: `Bearer ${token}` }
+    });
+
+    console.log(response);
+    dispatch(myStudioFetch(response.data));
   };
-}
+};

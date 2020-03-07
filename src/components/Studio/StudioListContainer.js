@@ -5,8 +5,6 @@ import StudioList from "./StudioList";
 
 class StudioListContainer extends React.Component {
   componentDidMount() {
-    console.log("WHAT IS MY EVENTS?", this.props.events);
-
     this.props.loadStudios();
   }
 

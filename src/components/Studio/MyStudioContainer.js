@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadStudio } from "../../actions/studios";
+import { loadMyStudio } from "../../actions/studios";
 
 class MyStudioContainer extends Component {
-  // componentDidMount() {
-  //   this.props.loadStudio(this.props.match.params.id);
-  // }
+  componentDidMount() {
+    this.props.loadMyStudio(this.props.match.params.id);
+  }
   render() {
     return (
       <div>
@@ -21,6 +21,4 @@ class MyStudioContainer extends Component {
 //   currentStudio: state.studios.currentStudio
 // });
 
-export default MyStudioContainer;
-
-// export default connect(mapStateToProps, { loadStudio })(MyStudioContainer);
+export default connect(null, { loadMyStudio })(MyStudioContainer);
