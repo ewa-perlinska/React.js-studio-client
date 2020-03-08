@@ -123,3 +123,31 @@ export const loadMyStudio = () => {
     dispatch(myStudioFetch(response.data));
   };
 };
+
+export const STUDIO_UPDATE_SUCCESS = "STUDIO_UPDATE_SUCCESS";
+
+export function studioUpdateSuccess(studio) {
+  return {
+    type: STUDIO_UPDATE_SUCCESS,
+    payload: studio
+  };
+}
+
+export function updateStudio(studioDetails, studioId) {
+  console.log("do i have mt studio id here????? ", studioId);
+
+  return async function(dispatch, getState) {
+    const response = await axios({
+      method: "PATCH",
+      url: `${baseUrl}/studio/${studioId}`,
+      studioId,
+
+      data: {
+        studioDetails
+      }
+    });
+
+    console.log(response);
+    dispatch(studioUpdateSuccess(response.data));
+  };
+}
