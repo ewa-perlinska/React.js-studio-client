@@ -72,7 +72,7 @@ function CreateProjectContainer(props) {
             );
 
             return {
-              ...prevState.image,
+              ...prevState,
               image: [...prevState.image, projectData.image.concat(url.url)]
             };
           });
@@ -86,9 +86,9 @@ function CreateProjectContainer(props) {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    // setProjectData(prevState => {
-    //   return { ...prevState, [name]: value };
-    // });
+    setProjectData(prevState => {
+      return { ...prevState, [name]: value };
+    });
   };
 
   const {
