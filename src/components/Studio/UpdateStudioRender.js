@@ -3,7 +3,7 @@ import UpdateStudioContainer from "./UpdateStudioContainer";
 
 class UpdateStudioRender extends Component {
   componentDidMount() {
-    console.log("WWWWWWWAAAAAT ARE MY PROPS", this.props.match.params.id);
+    console.log("WWWWWWWAAAAAT ARE MY PROPS", this.props);
   }
   render() {
     return (

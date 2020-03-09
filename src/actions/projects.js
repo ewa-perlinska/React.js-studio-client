@@ -51,12 +51,13 @@ function createProjectSuccess(project) {
   return {
     type: PROJECT_CREATE_SUCCESS,
     payload: {
-      project: 
+      project: project
     }
   };
 }
 
-export const createProject = projectDetails => {
+export const createProject = (projectDetails, studioId) => {
+  console.log("do i have mt studio id here????? PROJECT ", studioId);
   return async function(dispatch, getState) {
     const stateData = getState().auth.data;
     const token = stateData.token;
@@ -64,10 +65,12 @@ export const createProject = projectDetails => {
 
     const response = await axios({
       method: "POST",
-      url: "http://localhost:4000/project",
+      url: `http://localhost:4000/studio/${studioId}/project`,
       headers: { authorization: `Bearer ${token}` },
+      studioId,
       data: {
-        projectDetails
+        projectDetails,
+        studioId
       }
     });
 

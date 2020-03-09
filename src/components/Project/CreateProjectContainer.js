@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
-// import { createProject } from "../../actions/studios";
+import { createProject } from "../../actions/projects";
 
-function CreateProjectContainer() {
+function CreateProjectContainer(props) {
   const dispatch = useDispatch();
   const [projectData, setProjectData] = useState({
     title: "",
@@ -16,50 +16,79 @@ function CreateProjectContainer() {
     technique: "",
     category: "",
     descriptionOfProject: "",
-    image: ""
+    image: []
   });
+
+  console.log("DOOOO I HAVE MY PROPS????", props);
 
   const [loading, setLoading] = useState(false);
-  const state = useSelector(reduxState => {
-    return {
-      projectState: reduxState.project
-    };
-  });
+  // const state = useSelector(reduxState => {
+  //   return {
+  //     projectState: reduxState.project
+  //   };
+  // });
 
   const handleSubmit = event => {
-    console.log("---looking for roomId THROUGHT STATE---", state);
-
+    // console.log("---looking for roomId THROUGHT STATE---", state);
     event.preventDefault();
     // console.log(state);
     // const studioDetails = this.state;
-    dispatch(createProject(projectData));
+    props.dispatch(createProject(projectData, props.match.params.id));
+    // dispatch(createProject(projectData, studioId));
   };
 
   const handleFileSelect = async e => {
     setLoading(true);
     const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "qcq8titl");
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/eperlinska/image/upload`,
-      { method: "POST", body: data }
-    );
-    const file = await res.json();
-    console.log(file.url);
+    const arr = Object.values(files);
+    console.log(arr, "whaat");
 
-    setStudioData(prevState => {
-      return { ...prevState, image: file.url };
+    const requests = arr.map(file => {
+      const data = new FormData();
+      data.append("file", file);
+      console.log("what is dataaaaaaaaa ???", data);
+
+      data.append("upload_preset", "qcq8titl");
+      return fetch(`https://api.cloudinary.com/v1_1/eperlinska/image/upload`, {
+        method: "POST",
+        body: data
+      });
     });
+
+    Promise.all(requests)
+      .then(allRequests => {
+        console.log(allRequests);
+        return Promise.all(allRequests.map(r => r.json()));
+      })
+      .then(data => {
+        // console.log(data, "dataaaa");
+        data.map(url => {
+          // console.log("whaaaat is my state???", projectData);
+          setProjectData(prevState => {
+            // console.log("DOOOO I HAVE URL ??", url.url);
+            console.log(
+              " WWWWWWWAAAAAT IS THISSS ? ",
+              projectData.image.concat(url.url)
+            );
+
+            return {
+              ...prevState.image,
+              image: [...prevState.image, projectData.image.concat(url.url)]
+            };
+          });
+        });
+      });
+
+    // setProjectData({ image: url.url })
 
     setLoading(false);
   };
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setProjectData(prevState => {
-      return { ...prevState, [name]: value };
-    });
+    // setProjectData(prevState => {
+    //   return { ...prevState, [name]: value };
+    // });
   };
 
   const {
@@ -106,8 +135,14 @@ function CreateProjectContainer() {
           name="descriptionOfProject"
           value={descriptionOfProject}
         />
-        <label>Upload images: </label>
-        <input type="file" onChange={handleFileSelect} name="image" />
+        <label for="files">Upload images: </label>
+        <input
+          type="file"
+          id="files"
+          onChange={handleFileSelect}
+          name="image"
+          multiple
+        />
         <input type="submit" />
       </form>
     </div>
