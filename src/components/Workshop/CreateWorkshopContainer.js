@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import StudioForm from "./StudioForm";
 import { connect } from "react-redux";
-import { createStudio } from "../../actions/studios";
-import UploadImages from "../ImageUpload/ImageUploadContainer";
+import { createWorkshop } from "../../actions/workshops";
 
 function CreateWorkshopContainer() {
   const dispatch = useDispatch();
-  const [workshopData, setworkshopData] = useState({
+  const [workshopData, setWorkshopData] = useState({
     title: "",
     by: "",
     date: "",
@@ -49,7 +47,7 @@ function CreateWorkshopContainer() {
     const file = await res.json();
     console.log(file.url);
 
-    setStudioData(prevState => {
+    setWorkshopData(prevState => {
       return { ...prevState, featuredImage: file.url };
     });
 
@@ -58,7 +56,7 @@ function CreateWorkshopContainer() {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setStudioData(prevState => {
+    setWorkshopData(prevState => {
       return { ...prevState, [name]: value };
     });
   };
@@ -86,7 +84,7 @@ function CreateWorkshopContainer() {
         <label>Title:</label>
         <input onChange={handleChange} name="title" value={title} />
         <label>By:</label>
-        <input onChange={handleChange} name="by" value={by} />
+        <input onChange={handleChange} name="by" value={title} />
         <label>Date:</label>
         <input
           onChange={handleChange}
@@ -118,12 +116,5 @@ function CreateWorkshopContainer() {
     </div>
   );
 }
-
-// const mapStateToProps = state => {
-//   console.log("STATE IN MSTP", state);
-//   return {
-//     event: state.events.selectedEvent
-//   };
-// };
 
 export default connect()(CreateWorkshopContainer);
