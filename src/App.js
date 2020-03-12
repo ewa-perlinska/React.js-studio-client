@@ -5,10 +5,11 @@ import SignupContainer from "./components/SingUp/SingUpFormContainer";
 import LoginContainer from "./components/Login/LoginFormContainer";
 import UploadImages from "./components/ImageUpload/ImageUploadContainer";
 import CreateStudioContainer from "./components/Studio/CreateStudioContainer";
-
-function Test() {
-  return <h1>Hello!</h1>;
-}
+import StudioListContainer from "./components/Studio/StudioListContainer";
+import StudioDetails from "./components/Studio/StudioDetails";
+import MyStudioContainer from "./components/Studio/MyStudioContainer";
+import UpdateStudioContainer from "./components/Studio/UpdateStudioContainer";
+import UpdateStudioRender from "./components/Studio/UpdateStudioRender";
 
 function App() {
   return (
@@ -27,11 +28,24 @@ function App() {
         <Link to="/createStudio">
           <li>~ ADD YOUR STUDIO ~</li>
         </Link>
-        <Route exact path="/" component={Test} />
+        <Link to="/studio">
+          <li>~ LOOK AT ALL STUDIOS ~</li>
+        </Link>
+        <Link to="/mystudio">
+          <li>~ MY STUDIO ~</li>
+        </Link>
+        <Route exact path="/studio" component={StudioListContainer} />
+        <Route exact path="/studio/:id" component={StudioDetails} />
         <Route exact path="/signup" component={SignupContainer} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/uploadImage" component={UploadImages} />
         <Route exact path="/createStudio" component={CreateStudioContainer} />
+        <Route exact path="/mystudio" component={MyStudioContainer} />
+        <Route
+          exact
+          path="/update-studio-information/:id"
+          component={UpdateStudioRender}
+        />
       </Router>
     </div>
   );
