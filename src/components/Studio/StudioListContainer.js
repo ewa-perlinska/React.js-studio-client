@@ -1,7 +1,8 @@
 import React from "react";
 import { loadStudios, selectStudio } from "../../actions/studios";
 import { connect } from "react-redux";
-import StudioList from "./StudioList";
+import Studio from "./StudioList";
+import _ from "lodash";
 
 class StudioListContainer extends React.Component {
   componentDidMount() {
@@ -19,26 +20,72 @@ class StudioListContainer extends React.Component {
   };
 
   render() {
+    if (!this.props.studios.length) {
+      return "loading...";
+    }
+    console.log("fist array", this.props.studios);
+
+    const arrayFour = _.chunk(
+      this.props.studios,
+      this.props.studios.length / 4
+    );
+    console.log("second array", arrayFour);
+
     return (
-      <div>
-        {!this.props.studios ? (
-          <div>Loading...</div>
-        ) : (
-          <div>
-            {this.props.studios.map(studio => (
-              <StudioList
-                id={studio.id}
-                key={studio.id}
-                studioName={studio.studioName}
-                city={studio.city}
-                country={studio.country}
-                featuredImage={studio.featuredImage}
-                onClick={this.onClick}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <section className="container">
+        <div className="column">
+          {arrayFour[0].map(studio => (
+            <Studio
+              id={studio.id}
+              key={studio.id}
+              studioName={studio.studioName}
+              city={studio.city}
+              country={studio.country}
+              featuredImage={studio.featuredImage}
+              onClick={this.onClick}
+            />
+          ))}
+        </div>
+        <div className="column">
+          {arrayFour[1].map(studio => (
+            <Studio
+              id={studio.id}
+              key={studio.id}
+              studioName={studio.studioName}
+              city={studio.city}
+              country={studio.country}
+              featuredImage={studio.featuredImage}
+              onClick={this.onClick}
+            />
+          ))}
+        </div>
+        <div className="column">
+          {arrayFour[2].map(studio => (
+            <Studio
+              id={studio.id}
+              key={studio.id}
+              studioName={studio.studioName}
+              city={studio.city}
+              country={studio.country}
+              featuredImage={studio.featuredImage}
+              onClick={this.onClick}
+            />
+          ))}
+        </div>
+        <div className="column">
+          {arrayFour[3].map(studio => (
+            <Studio
+              id={studio.id}
+              key={studio.id}
+              studioName={studio.studioName}
+              city={studio.city}
+              country={studio.country}
+              featuredImage={studio.featuredImage}
+              onClick={this.onClick}
+            />
+          ))}
+        </div>
+      </section>
     );
   }
 }
