@@ -23,6 +23,13 @@ class MyStudio extends Component {
               </button>{" "}
             </Link>
           </div>
+          <div>
+            <Link to={`/add-project/${this.props.id}`}>
+              <button onClick={() => this.props.onClick(this.props.id)}>
+                ~ ADD PROJECT ~
+              </button>{" "}
+            </Link>
+          </div>
         </div>
       </div>
     );

@@ -135,13 +135,12 @@ export function studioUpdateSuccess(studio) {
 
 export function updateStudio(studioDetails, studioId) {
   console.log("do i have mt studio id here????? ", studioId);
-
+  console.log("do i have mt studio details here????? ", studioDetails);
   return async function(dispatch, getState) {
     const response = await axios({
       method: "PATCH",
       url: `${baseUrl}/studio/${studioId}`,
       studioId,
-
       data: {
         studioDetails
       }

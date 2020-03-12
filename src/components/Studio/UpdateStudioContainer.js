@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { updateStudio } from "../../actions/studios";
 
-function UpdateStudioContainer() {
+function UpdateStudioContainer(props) {
   const dispatch = useDispatch();
   const [studioData, setStudioData] = useState({
     studioName: "",
@@ -19,24 +19,24 @@ function UpdateStudioContainer() {
     featuredImage: ""
   });
 
-  // console.log("DOOOO I HAVE MY PROPS????", this.props);
+  console.log("DOOOO I HAVE MY PROPS????", props);
 
   const [loading, setLoading] = useState(false);
-  const state = useSelector(reduxState => {
-    return {
-      studioState: reduxState.studio
-    };
-  });
+  // const state = useSelector(reduxState => {
+  //   return {
+  //     studioState: reduxState.studio
+  //   };
+  // });
 
   const handleSubmit = event => {
-    console.log("---looking for roomId THROUGHT STATE---", state);
+    // console.log("---looking for roomId THROUGHT STATE---", state);
 
     event.preventDefault();
-    // console.log("DOOO I HAVE MY PARAMS????? ", this.props.match.params.id);
+    console.log("DOOO I HAVE MY PARAMS????? ", props.match.params.id);
 
     // console.log(state);
     // const studioDetails = this.state;
-    this.props.dispatch(updateStudio(studioData, this.props.match.params.id));
+    props.dispatch(updateStudio(studioData, props.match.params.id));
   };
 
   const handleFileSelect = async e => {
