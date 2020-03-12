@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class StudioList extends Component {
+class Studio extends Component {
   render() {
     return (
-      <div className="list">
+      <div className="studio">
         <Link to={`/studio/${this.props.id}`}>
-          <div className="index">{this.props.id}</div>
-          <div className="title">{this.props.studioName}</div>
+          {/* <div className="index">{this.props.id}</div>
+          <div className="title">{this.props.studioName}</div> */}
           <div>
             <img
+              style={{ width: "100%", padding: "2px" }}
               className="image"
               alt="Studio image"
               src={this.props.featuredImage}
             ></img>
           </div>
-          <div className="city">{this.props.city}</div>
+          {/* <div className="city">{this.props.city}</div>
           <div className="country">{this.props.country}</div>
           <button onClick={() => this.props.onClick(this.props.id)}>
             ~ CHECK STUDIO ~
-          </button>{" "}
+          </button>{" "} */}
         </Link>
       </div>
     );
   }
 }
 
-export default StudioList;
+export default Studio;

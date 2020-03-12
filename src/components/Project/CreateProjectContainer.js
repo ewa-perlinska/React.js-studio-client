@@ -70,7 +70,6 @@ function CreateProjectContainer(props) {
               " WWWWWWWAAAAAT IS THISSS ? ",
               projectData.image.concat(url.url)
             );
-
             return {
               ...prevState,
               image: [...prevState.image, projectData.image.concat(url.url)]

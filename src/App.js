@@ -10,6 +10,8 @@ import StudioDetails from "./components/Studio/StudioDetails";
 import MyStudioContainer from "./components/Studio/MyStudioContainer";
 import UpdateStudioContainer from "./components/Studio/UpdateStudioContainer";
 import CreateProjectContainer from "./components/Project/CreateProjectContainer";
+import CreateWorkshopContainer from "./components/Workshop/CreateWorkshopContainer";
+import WorkshopListContainer from "./components/Workshop/WorkshopListContainer";
 
 function App() {
   return (
@@ -31,11 +33,17 @@ function App() {
         <Link to="/studio">
           <li>~ LOOK AT ALL STUDIOS ~</li>
         </Link>
+        <Link to="/workshop">
+          <li>~ LOOK AT ALL WORKSHOPS ~</li>
+        </Link>
         <Link to="/mystudio">
           <li>~ MY STUDIO ~</li>
         </Link>
         <Link to="/createProject">
           <li>~ ADD YOUR PROJECTS ~</li>
+        </Link>
+        <Link to="/create-workshop">
+          <li>~ ADD YOUR WORKSHOP ~</li>
         </Link>
         <Route exact path="/studio" component={StudioListContainer} />
         <Route exact path="/studio/:id" component={StudioDetails} />
@@ -43,6 +51,12 @@ function App() {
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/uploadImage" component={UploadImages} />
         <Route exact path="/createStudio" component={CreateStudioContainer} />
+        <Route exact path="/workshop" component={WorkshopListContainer} />
+        <Route
+          exact
+          path="/create-workshop"
+          component={CreateWorkshopContainer}
+        />
         <Route exact path="/mystudio" component={MyStudioContainer} />
         <Route
           exact
