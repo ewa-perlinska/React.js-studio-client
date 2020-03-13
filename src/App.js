@@ -12,12 +12,12 @@ import UpdateStudioContainer from "./components/Studio/UpdateStudioContainer";
 import CreateProjectContainer from "./components/Project/CreateProjectContainer";
 import CreateWorkshopContainer from "./components/Workshop/CreateWorkshopContainer";
 import WorkshopListContainer from "./components/Workshop/WorkshopListContainer";
-
+import Toolbar from "./components/Toolbar/Toolbar";
 function App() {
   return (
     <div className="App">
-      <h1>siema</h1>
       <Router>
+        <Toolbar></Toolbar>
         <Link to="/signup">
           <li>~ SIGN UP ~ </li>
         </Link>
