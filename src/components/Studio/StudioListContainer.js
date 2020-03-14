@@ -32,7 +32,7 @@ class StudioListContainer extends React.Component {
     console.log("second array", arrayFour);
 
     return (
-      <section className="container">
+      <section className="container" style={{ marginTop: "64px" }}>
         <div className="column">
           {arrayFour[0].map(studio => (
             <Studio

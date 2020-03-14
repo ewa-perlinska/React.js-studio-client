@@ -18,33 +18,6 @@ function App() {
     <div className="App">
       <Router>
         <Toolbar></Toolbar>
-        <Link to="/signup">
-          <li>~ SIGN UP ~ </li>
-        </Link>
-        <Link to="/login">
-          <li>~ LOGIN ~</li>
-        </Link>
-        <Link to="/uploadImage">
-          <li>~ UPLOAD IMAGE ~</li>
-        </Link>
-        <Link to="/createStudio">
-          <li>~ ADD YOUR STUDIO ~</li>
-        </Link>
-        <Link to="/studio">
-          <li>~ LOOK AT ALL STUDIOS ~</li>
-        </Link>
-        <Link to="/workshop">
-          <li>~ LOOK AT ALL WORKSHOPS ~</li>
-        </Link>
-        <Link to="/mystudio">
-          <li>~ MY STUDIO ~</li>
-        </Link>
-        <Link to="/createProject">
-          <li>~ ADD YOUR PROJECTS ~</li>
-        </Link>
-        <Link to="/create-workshop">
-          <li>~ ADD YOUR WORKSHOP ~</li>
-        </Link>
         <Route exact path="/studio" component={StudioListContainer} />
         <Route exact path="/studio/:id" component={StudioDetails} />
         <Route exact path="/signup" component={SignupContainer} />
