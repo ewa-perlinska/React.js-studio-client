@@ -1,66 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../SideDrawer/DrawerToggleButton";
+import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 
 const toolbar = props => (
   <header className="toolbar">
     <nav className="toolbar_navigation">
-      <div></div>
-      <div className="toolbar_logo">
-        <a href="/">THE LOGO</a>
-      </div>
+      <div className="toolbar_logo"></div>
+      <img
+        alt="omen image"
+        src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/89731620_2629681873935328_4633637780960837632_o.jpg?_nc_cat=105&_nc_sid=8024bb&_nc_oc=AQmGkWubwxGHC13ToQVMXBuh8CXeSP1KRRqqYaN1d9wxeLOtF1zT7w1H_VGAgRRpVcM&_nc_ht=scontent-amt2-1.xx&oh=aa1d24868ac5165ea532a0d7cd4786ae&oe=5E93030B"
+      ></img>
       <div className="spacer"></div>
-      <div className="toolbar_navigation-items">
-        <ul>
-          <li>
-            {" "}
-            <a>
-              {" "}
-              <Link to="/signup">~ SIGN UP ~</Link>
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/login">~ LOGIN ~</Link>
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/uploadImage">~ UPLOAD IMAGE ~</Link>
-            </a>
-          </li>
-          <li>
-            <a>
-              {" "}
-              <Link to="/createStudio">~ ADD YOUR STUDIO ~</Link>{" "}
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/studio">~ LOOK AT ALL STUDIOS ~</Link>{" "}
-            </a>
-          </li>
-          <li>
-            <a>
-              {" "}
-              <Link to="/workshop">~ LOOK AT ALL WORKSHOPS ~</Link>{" "}
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/mystudio">~ MY STUDIO ~</Link>{" "}
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/createProject">~ ADD YOUR PROJECTS ~</Link>{" "}
-            </a>
-          </li>
-          <li>
-            <a>
-              <Link to="/create-workshop">~ ADD YOUR WORKSHOP ~</Link>{" "}
-            </a>
-          </li>
-        </ul>
+      <div>
+        <DrawerToggleButton click={props.drawerClickHandler} />
       </div>
     </nav>
   </header>
