@@ -3,6 +3,11 @@ import axios from "axios";
 const baseUrl = "http://localhost:4000";
 
 export const STUDIOS_FETCHED = "STUDIOS_FETCHED";
+export const ONE_STUDIO_SELECTED = "ONE_STUDIO_SELECTED";
+export const STUDIO_CREATE_SUCCESS = "STUDIO_CREATE_SUCCESS";
+export const STUDIO_FETCHED = "STUDIO_FETCHED";
+export const MY_STUDIO_FETCHED = "MY_STUDIO_FETCHED";
+export const STUDIO_UPDATE_SUCCESS = "STUDIO_UPDATE_SUCCESS";
 
 export function studios(studios) {
   return {
@@ -24,7 +29,6 @@ export function loadStudios() {
     }
   };
 }
-export const ONE_STUDIO_SELECTED = "ONE_STUDIO_SELECTED";
 
 export function studio(studio) {
   return {
@@ -44,8 +48,6 @@ export function selectStudio(id) {
     }
   };
 }
-
-export const STUDIO_CREATE_SUCCESS = "STUDIO_CREATE_SUCCESS";
 
 function createStudioSuccess(studio) {
   return {
@@ -76,8 +78,6 @@ export const createStudio = studioDetails => {
   };
 };
 
-export const STUDIO_FETCHED = "STUDIO_FETCHED";
-
 export function studioFetch(studio) {
   return {
     type: STUDIO_FETCHED,
@@ -98,8 +98,6 @@ export function loadStudio(studioId) {
     }
   };
 }
-
-export const MY_STUDIO_FETCHED = "MY_STUDIO_FETCHED";
 
 export function myStudioFetch(studio) {
   return {
@@ -123,8 +121,6 @@ export const loadMyStudio = () => {
     dispatch(myStudioFetch(response.data));
   };
 };
-
-export const STUDIO_UPDATE_SUCCESS = "STUDIO_UPDATE_SUCCESS";
 
 export function studioUpdateSuccess(studio) {
   return {

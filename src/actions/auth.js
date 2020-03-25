@@ -1,4 +1,5 @@
 import axios from "axios";
+import instance from "../axios";
 
 export const USER_CREATED = "USER_CREATED";
 
@@ -14,11 +15,11 @@ export function signUp(username, name, surname, email, password) {
   return async function(dispatch, getState) {
     try {
       const response = await axios.post(`${baseUrl}/signup`, {
-        username: username,
-        name: name,
-        surname: surname,
-        email: email,
-        password: password
+        username,
+        name,
+        surname,
+        email,
+        password
       });
       if (response.status === 201) {
         dispatch(signUpSuccess());
@@ -39,8 +40,8 @@ export function login(email, password) {
   return async function(dispatch, getState) {
     try {
       const response = await axios.post(`${baseUrl}/login`, {
-        email: email,
-        password: password
+        email,
+        password
       });
       // console.log("what is my response?", response.data.token);
       dispatch(loginSuccess(response.data));
