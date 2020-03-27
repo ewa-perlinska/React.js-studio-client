@@ -4,7 +4,7 @@ class SearchFormContainer extends Component {
   render() {
     return (
       <div>
-        <SearchForm></SearchForm>
+        <SearchForm />
       </div>
     );
   }
