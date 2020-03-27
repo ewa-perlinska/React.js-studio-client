@@ -1,5 +1,5 @@
 import React from "react";
-import { loadExhibitions, selectWorkshop } from "../../actions/workshops";
+import { loadExhibitions, selectExhibition } from "../../actions/exhitbitions";
 import { connect } from "react-redux";
 import ExhibitionList from "./ExhibitionList";
 

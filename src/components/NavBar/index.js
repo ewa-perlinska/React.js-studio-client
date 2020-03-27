@@ -13,6 +13,7 @@ export default function NavBar(props) {
       <Link to="/createProject">~ ADD YOUR PROJECTS ~</Link>{" "}
       <Link to="/mystudio">~ MY STUDIO ~</Link>{" "}
       <Link to="/create-exhibition">~ ADD YOUR EXHIBITION ~</Link>{" "}
+      <Link to="/exhibition">~ LOOK AT ALL EXHIBITIONS ~</Link>{" "}
     </div>
   );
 }

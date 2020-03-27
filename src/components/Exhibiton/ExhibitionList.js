@@ -13,7 +13,7 @@ class ExhibitionList extends Component {
         <div className="city">{this.props.city}</div>
         <div className="country">{this.props.country}</div>
         <div>{this.props.price}</div>
-        <div>{this.props.descriptionOfExhibitio}</div>
+        <div>{this.props.descriptionOfExhibition}</div>
         <img
           className="image"
           alt="Studio image"
