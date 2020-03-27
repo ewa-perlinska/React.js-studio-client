@@ -15,6 +15,7 @@ import WorkshopListContainer from "./components/Workshop/WorkshopListContainer";
 import Toolbar from "./components/Toolbar/Toolbar";
 import SideDrawer from "./components/SideDrawer/SideDrawer";
 import Backdrop from "./components/Backdrop/Backdrop";
+import NavBar from "./components/NavBar";
 
 class App extends Component {
   state = {
@@ -40,33 +41,34 @@ class App extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
     return (
-      <div className="App">
+      <div className='App' style={{ margin: "50px" }}>
         <Router>
           {/* <div style={{ height: "100%" }}> */}
           <Toolbar drawerClickHandler={this.drawerToggleClickHandler}></Toolbar>
-          {sideDrawer}
+          <NavBar />
+          {/* sideDrawer */}
           {/* {backdrop} */}
-          <Route exact path="/studio" component={StudioListContainer} />
-          <Route exact path="/studio/:id" component={StudioDetails} />
-          <Route exact path="/signup" component={SignupContainer} />
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/uploadImage" component={UploadImages} />
-          <Route exact path="/createStudio" component={CreateStudioContainer} />
-          <Route exact path="/workshop" component={WorkshopListContainer} />
+          <Route exact path='/studio' component={StudioListContainer} />
+          <Route exact path='/studio/:id' component={StudioDetails} />
+          <Route exact path='/signup' component={SignupContainer} />
+          <Route exact path='/login' component={LoginContainer} />
+          <Route exact path='/uploadImage' component={UploadImages} />
+          <Route exact path='/createStudio' component={CreateStudioContainer} />
+          <Route exact path='/workshop' component={WorkshopListContainer} />
           <Route
             exact
-            path="/create-workshop"
+            path='/create-workshop'
             component={CreateWorkshopContainer}
           />
-          <Route exact path="/mystudio" component={MyStudioContainer} />
+          <Route exact path='/mystudio' component={MyStudioContainer} />
           <Route
             exact
-            path="/add-project/:id"
+            path='/add-project/:id'
             component={CreateProjectContainer}
           />
           <Route
             exact
-            path="/update-studio-information/:id"
+            path='/update-studio-information/:id'
             component={UpdateStudioContainer}
           />
           {/* </div> */}

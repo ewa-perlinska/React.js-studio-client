@@ -85,45 +85,50 @@ function CreateStudioContainer() {
       <h3>~ ENTER INFORMATION ABOUT STUDIO BELOW ~</h3>
       <form onSubmit={handleSubmit}>
         <label>Studio Name :</label>
-        <input onChange={handleChange} name="studioName" value={studioName} />
+        <input onChange={handleChange} name='studioName' value={studioName} />
         <label>Street: </label>
-        <input onChange={handleChange} name="street" value={street} />
+        <input onChange={handleChange} name='street' value={street} />
         <label>City: </label>
-        <input onChange={handleChange} name="city" value={city} />
+        <input onChange={handleChange} name='city' value={city} />
         <label>Country: </label>
-        <input onChange={handleChange} name="country" value={country} />
+        <input onChange={handleChange} name='country' value={country} />
         <label>Email: </label>
-        <input onChange={handleChange} name="email" value={email} />
+        <input onChange={handleChange} name='email' value={email} />
         <label>Number: </label>
-        <input onChange={handleChange} name="number" value={number} />
+        <input
+          onChange={handleChange}
+          name='number'
+          value={number}
+          type='number'
+        />
         <label>About studio: </label>
         <input
           onChange={handleChange}
-          name="descriptionOfStudio"
+          name='descriptionOfStudio'
           value={descriptionOfStudio}
         />
 
         <label>Case studies: </label>
         <input
           onChange={handleChange}
-          name="descriptionOfCaseStudies"
+          name='descriptionOfCaseStudies'
           value={descriptionOfCaseStudies}
         />
         <label>Graphic design practice: </label>
         <input
           onChange={handleChange}
-          name="descriptionOfPractie"
+          name='descriptionOfPractie'
           value={descriptionOfPractie}
         />
         <label>Graphic design Education: </label>
         <input
           onChange={handleChange}
-          name="descriptionOfDesignEducation"
+          name='descriptionOfDesignEducation'
           value={descriptionOfDesignEducation}
         />
         <label>Upload image: </label>
-        <input type="file" onChange={handleFileSelect} name="featuredImage" />
-        <input type="submit" />
+        <input type='file' onChange={handleFileSelect} name='featuredImage' />
+        <input type='submit' disabled={loading} />
       </form>
     </div>
   );
