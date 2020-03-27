@@ -60,7 +60,7 @@ export const createExhibition = exhibitionDetails => {
   return async function(dispatch, getState) {
     const stateData = getState().auth.data;
     const token = stateData.token;
-    console.log("my studio details", exhibitionDetails);
+    console.log("my exhibiton details", exhibitionDetails);
 
     const response = await axios({
       method: "POST",
