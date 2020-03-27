@@ -26,7 +26,6 @@ body {
   border-bottom: 2 px solid black;
   border-right: 2px solid black;
   border-top: 2px solid black;
-  padding: 55px;
 }
 
 .studio:hover {
@@ -80,6 +79,7 @@ input[type="submit"] {
 .container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 0px;
 }
 
