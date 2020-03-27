@@ -3,6 +3,11 @@ import axios from "axios";
 const baseUrl = "http://localhost:4000";
 
 export const PROJECTS_FETCHED = "PROJECTS_FETCHED";
+export const ONE_PROJECT_SELECTED = "ONE_PROJECT_SELECTED";
+export const PROJECT_CREATE_SUCCESS = "PROJECT_CREATE_SUCCESS";
+export const PROJECT_FETCHED = "PROJECT_FETCHED";
+export const MY_PROJECT_FETCHED = "MY_PROJECT_FETCHED";
+export const PROJECT_UPDATE_SUCCESS = "PROJECT_UPDATE_SUCCESS";
 
 export function projects(projects) {
   return {
@@ -24,7 +29,6 @@ export function loadProjects() {
     }
   };
 }
-export const ONE_PROJECT_SELECTED = "ONE_PROJECT_SELECTED";
 
 export function project(project) {
   return {
@@ -44,8 +48,6 @@ export function selectProject(id) {
     }
   };
 }
-
-export const PROJECT_CREATE_SUCCESS = "PROJECT_CREATE_SUCCESS";
 
 function createProjectSuccess(project) {
   return {
@@ -79,8 +81,6 @@ export const createProject = (projectDetails, studioId) => {
   };
 };
 
-export const PROJECT_FETCHED = "PROJECT_FETCHED";
-
 export function projectFetch(project) {
   return {
     type: PROJECT_FETCHED,
@@ -101,8 +101,6 @@ export function loadProject(projectId) {
     }
   };
 }
-
-export const MY_PROJECT_FETCHED = "MY_PROJECT_FETCHED";
 
 export function myProjectFetch(project) {
   return {
@@ -126,8 +124,6 @@ export const loadMyProject = () => {
     dispatch(myProjectFetch(response.data));
   };
 };
-
-export const PROJECT_UPDATE_SUCCESS = "PROJECT_UPDATE_SUCCESS";
 
 export function projectUpdateSuccess(project) {
   return {
