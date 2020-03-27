@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
-import { createExhibition } from "../../actions/workshops";
+import { createExhibition } from "../../actions/exhitbitions";
 
 function CreateExhibitionContainer() {
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ function CreateExhibitionContainer() {
   return (
     <div>
       <h1> ADD YOUR EXHIBITION </h1>
-      <h3>~ ENTER INFORMATION ABOUT WORKSHOP BELOW ~</h3>
+      <h3>~ ENTER INFORMATION ABOUT EXHIBITION BELOW ~</h3>
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input onChange={handleChange} name="title" value={title} />
@@ -108,7 +108,12 @@ function CreateExhibitionContainer() {
         <label>Country: </label>
         <input onChange={handleChange} name="country" value={country} />
         <label>Price: </label>
-        <input onChange={handleChange} name="price" value={price} />
+        <input
+          onChange={handleChange}
+          name="price"
+          type="number"
+          value={price}
+        />
         <label>Description: </label>
         <input
           onChange={handleChange}
@@ -117,7 +122,7 @@ function CreateExhibitionContainer() {
         />
         <label>Upload image: </label>
         <input type="file" onChange={handleFileSelect} name="featuredImage" />
-        <input type="submit" />
+        <input type="submit" disabled={loading} />
       </form>
     </div>
   );
