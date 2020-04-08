@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
-import { createExhibition } from "../../actions/exhitbitions";
+import { createBookStore } from "../../actions/bookstores";
 
-function CreateExhibitionContainer() {
+function CreateBookStoreContainer() {
   const dispatch = useDispatch();
-  const [exhibitionData, setExhibitionData] = useState({
-    title: "",
-    from: "",
-    dateOfOpening: "",
-    dateOfOclosing: "",
+  const [bookStoreData, setBookStoreData] = useState({
+    name: "",
+    hourOfOpening: "",
+    hourOfOclosing: "",
     street: "",
     city: "",
     country: "",
-    price: "",
-    descriptionOfExhibition: "",
+    phoneNumber: "",
+    email: "",
+    website: "",
+    descriptionOfBookstore: "",
     featuredImage: ""
   });
 
   const [loading, setLoading] = useState(false);
-  // const state = useSelector(reduxState => {
-  //   return {
-  //     studioState: reduxState.studio
-  //   };
-  // });
 
   const handleSubmit = event => {
     // console.log("---looking for roomId THROUGHT STATE---", state);
@@ -31,7 +27,7 @@ function CreateExhibitionContainer() {
     event.preventDefault();
     // console.log(state);
     // const studioDetails = this.state;
-    dispatch(createExhibition(exhibitionData));
+    dispatch(createBookStore(bookStoreData));
   };
 
   const handleFileSelect = async e => {
@@ -47,7 +43,7 @@ function CreateExhibitionContainer() {
     const file = await res.json();
     console.log(file.url);
 
-    setExhibitionData(prevState => {
+    setBookStoreData(prevState => {
       return { ...prevState, featuredImage: file.url };
     });
 
@@ -56,50 +52,45 @@ function CreateExhibitionContainer() {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setExhibitionData(prevState => {
+    setBookStoreData(prevState => {
       return { ...prevState, [name]: value };
     });
   };
 
   const {
-    title,
-    from,
-    dateOfOpening,
-    dateOfOclosing,
+    name,
+    hourOfOpening,
+    hourOfOclosing,
     street,
     city,
     country,
-    price,
-    descriptionOfExhibition,
+    phoneNumber,
+    email,
+    website,
+    descriptionOfBookstore,
     featuredImage
-  } = exhibitionData;
+  } = bookStoreData;
 
-  console.log("DATA", exhibitionData);
+  console.log("DATA", bookStoreData);
 
   return (
     <div>
-      <h1> ADD YOUR EXHIBITION </h1>
-      <h3>~ ENTER INFORMATION ABOUT EXHIBITION BELOW ~</h3>
+      <h1> ADD YOUR BOOKSTORE </h1>
+      <h3>~ ENTER INFORMATION ABOUT BOOKSTORE BELOW ~</h3>
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input onChange={handleChange} name="title" value={title} />
+        <label>name:</label>
+        <input onChange={handleChange} name="name" value={name} />
         <label>From:</label>
-        <input onChange={handleChange} name="from" value={from} />
-        <label>Date of opening :</label>
         <input
           onChange={handleChange}
-          name="dateOfOpening"
-          type="date"
-          min={"2020-02-28"}
-          value={dateOfOpening}
+          name="hourOfOpening"
+          value={hourOfOpening}
         />
-        <label>Date of closing :</label>
+        <label>Till:</label>
         <input
           onChange={handleChange}
-          name="dateOfOclosing"
-          type="date"
-          min={"2020-02-28"}
-          value={dateOfOclosing}
+          name="hourOfOclosing"
+          value={hourOfOclosing}
         />
         <label>Street: </label>
         <input onChange={handleChange} name="street" value={street} />
@@ -107,18 +98,22 @@ function CreateExhibitionContainer() {
         <input onChange={handleChange} name="city" value={city} />
         <label>Country: </label>
         <input onChange={handleChange} name="country" value={country} />
-        <label>Price: </label>
+        <label>Phone Number: </label>
         <input
           onChange={handleChange}
-          name="price"
+          name="phoneNumber"
           type="number"
-          value={price}
+          value={phoneNumber}
         />
-        <label>Description: </label>
+        <label>email: </label>
+        <input onChange={handleChange} name="email" value={email} />
+        <label> website: </label>
+        <input onChange={handleChange} name="website" value={website} />
+        <label>about : </label>
         <input
           onChange={handleChange}
-          name="descriptionOfExhibition"
-          value={descriptionOfExhibition}
+          name="descriptionOfBookstore"
+          value={descriptionOfBookstore}
         />
         <label>Upload image: </label>
         <input type="file" onChange={handleFileSelect} name="featuredImage" />
@@ -128,4 +123,4 @@ function CreateExhibitionContainer() {
   );
 }
 
-export default connect()(CreateExhibitionContainer);
+export default connect()(CreateBookStoreContainer);
