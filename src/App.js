@@ -18,6 +18,7 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import NavBar from "./components/NavBar";
 import CreateExhibitionContainer from "./components/Exhibiton/CreateExhibitonContainer";
 import ExhibitionListContainer from "./components/Exhibiton/ExhibitionListContainer";
+import CreateBookStoreContainer from "./components/BookStore/CreateBookStoreContainer";
 
 class App extends Component {
   state = {
@@ -79,6 +80,12 @@ class App extends Component {
             component={CreateExhibitionContainer}
           />
           <Route exact path="/exhibition" component={ExhibitionListContainer} />
+          <Route
+            exact
+            path="/create-bookstore"
+            component={CreateBookStoreContainer}
+          />
+          <Route exact path="/bookstore" component={CreateBookStoreContainer} />
           {/* </div> */}
         </Router>
       </div>
